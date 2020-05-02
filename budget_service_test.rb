@@ -11,16 +11,16 @@ class BudgetServiceTest < Minitest::Test
   def test_budget_can_return
     bs = BudgetRepository.new
     stub(bs).get_all{ prepared_data }
-    start_time = DateTime.new(20200501)
-    end_time = DateTime.new(20200531)
+    start_time = Date.parse('20200501')
+    end_time = Date.parse('20200531')
     result = BudgetService.new(bs).query(start_time: start_time, end_time: end_time)
     assert_equal result, 310
   end
   def test_query_one_day
     bs = BudgetRepository.new
     stub(bs).get_all{ prepared_data }
-    start_time = DateTime.new(20200501)
-    end_time = DateTime.new(20200501)
+    start_time = Date.parse('20200501')
+    end_time = Date.parse('20200501')
     result = BudgetService.new(bs).query(start_time: start_time, end_time: end_time)
     assert_equal result, 10
   end
@@ -28,8 +28,17 @@ class BudgetServiceTest < Minitest::Test
   def test_query_3_days
     bs = BudgetRepository.new
     stub(bs).get_all{ prepared_data }
-    start_time = DateTime.new(20200501)
-    end_time = DateTime.new(20200503)
+    start_time = Date.parse('20200501')
+    end_time = Date.parse('20200503')
+    result = BudgetService.new(bs).query(start_time: start_time, end_time: end_time)
+    assert_equal result, 30
+  end
+
+  def test_over_one_month
+    bs = BudgetRepository.new
+    stub(bs).get_all{ prepared_data }
+    start_time = Date.parse('20200501')
+    end_time = Date.parse('20200615')
     result = BudgetService.new(bs).query(start_time: start_time, end_time: end_time)
     assert_equal result, 30
   end
