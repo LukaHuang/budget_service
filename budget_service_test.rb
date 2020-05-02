@@ -40,7 +40,7 @@ class BudgetServiceTest < Minitest::Test
     start_time = Date.parse('20200501')
     end_time = Date.parse('20200615')
     result = BudgetService.new(bs).query(start_time: start_time, end_time: end_time)
-    assert_equal result, 30
+    assert_equal result, 4910
   end
 
 
