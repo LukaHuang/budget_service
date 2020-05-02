@@ -2,14 +2,14 @@ GEM
   remote: https://rubygems.org/
   specs:
     minitest (5.10.1)
-    mocha (1.11.2)
+    rr (1.2.1)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   minitest
-  mocha
+  rr
 
 BUNDLED WITH
    2.1.4
