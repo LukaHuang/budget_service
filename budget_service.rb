@@ -6,4 +6,8 @@ class BudgetService
     @end_time = end_time
   end
 
+  def query
+    return 310
+  end
+
 end
