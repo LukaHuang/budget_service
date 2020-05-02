@@ -14,9 +14,11 @@ class BudgetService
     data = dao.get_all
     start_month = start_time.strftime("%m")
     end_month = end_time.strftime("%m")
+    # match = (end_time - start_time).to_s.match(/365\/(\d+)/)
+    days = (end_time - start_time).to_i / 365 + 1
+    puts "days #{days}"
     current_year_month = start_time.strftime("%Y%m")[0..5]
-    puts current_year_month
-    return data[current_year_month] if start_month == end_month
+    return data[current_year_month] * days / 31
 
   end
 

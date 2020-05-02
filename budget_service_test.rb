@@ -11,19 +11,19 @@ class BudgetServiceTest < Minitest::Test
   def test_budget_can_return
     bs = BudgetRepository.new
     stub(bs).get_all{ prepared_data }
-
-    #dao = database.expects(:get_all).returns(prepared_data)
     start_time = DateTime.new(20200501)
     end_time = DateTime.new(20200531)
     result = BudgetService.new(bs).query(start_time: start_time, end_time: end_time)
     assert_equal result, 310
   end
-
-  # def test_query_one_day
-  #
-  #   # result = BudgetService.new(mock_database).query(start_time: '20200501', end_time: '20200501')
-  #   # assert_equal result, 10
-  # end
+  def test_query_one_day
+    bs = BudgetRepository.new
+    stub(bs).get_all{ prepared_data }
+    start_time = DateTime.new(20200501)
+    end_time = DateTime.new(20200501)
+    result = BudgetService.new(bs).query(start_time: start_time, end_time: end_time)
+    assert_equal result, 10
+  end
 
 
   # private
