@@ -1,0 +1,19 @@
+高內聚‘低耦合’
+
+simple design
+* Passes the tests
+* Reveals intention
+* No duplication
+* Fewest elements
+
+1.傳的參數越少越好
+2.回傳越簡單越少
+3.互動次數少
+
+Rename
+Inline Variable
+Extract Variable
+Extract Method
+Move Method
+Inline Parameter
+

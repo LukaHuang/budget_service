@@ -53,6 +53,21 @@ class BudgetServiceTest < Minitest::Test
     assert_equal result, 3011
   end
 
+  def test_start_date_params
+    bs = BudgetRepository.new
+    stub(bs).get_all{ prepared_data }
+    start_time = Date.parse('20200502')
+    end_time = Date.parse('20200501')
+    if start_time.to_time.to_i - end_time.to_time.to_i > 0
+      result = 0
+    else
+      result = BudgetService.new(bs).query(start_time: start_time, end_time: end_time)
+    end
+
+    assert_equal result, 0
+  end
+
+  
   # private
 
   def prepared_data

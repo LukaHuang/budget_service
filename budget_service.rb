@@ -35,7 +35,7 @@ class BudgetService
         middle_budget += data["20200" + middle_month.to_s].nil? ? 0 : data["20200" + middle_month.to_s]
         middle_month += 1;
       end
-      
+
       return budget_of_start / totol_day_of_start_month * days_of_start_month + budget_of_end * days_of_end_month / totol_day_of_end_month + middle_budget
     else
       days_of_start_month =  (Date.civil( start_year.to_i, start_month.to_i,-1) - start_time).to_i + 1
